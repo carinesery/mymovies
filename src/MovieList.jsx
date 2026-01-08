@@ -11,7 +11,6 @@ function MovieList() {
         fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 setMoviesList(data.results);
             });
     }, [category]);
