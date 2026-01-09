@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-function MovieDetail() {
+function MovieDetail({addToWishlist, removeFromWishlist}) {
     const [movie, setMovie] = useState({});
     const [actors, setActors] = useState([]);
 
@@ -15,7 +15,7 @@ function MovieDetail() {
                 setMovie(data)
             })
 
-            fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`)
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data.cast);
@@ -37,7 +37,10 @@ function MovieDetail() {
                 ))}
                 </ul>
             </li>
-
+            <li>
+                <button onClick={() => addToWishlist(movie)}>Ajouter à ma wihslist</button> {/** Ajout à la wihslist */}
+                <button onClick={() => removeFromWishlist(movie.id)}>Retirer de ma wihslist</button> {/** Suppression à la wihslist */}
+            </li>
 
         </ul>
     )
