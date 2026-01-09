@@ -1,27 +1,28 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import {useParams} from "react-router-dom";
 
 function MovieDetail({addToWishlist, removeFromWishlist}) {
     const [movie, setMovie] = useState({});
     const [actors, setActors] = useState([]);
+    const {id} = useParams();
 
-    const movieId = 603;
     const apiKey = import.meta.env.VITE_APP_TMDB_KEY
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
+        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
                 setMovie(data)
             })
 
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`)
+        fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data.cast);
                 setActors(data.cast.slice(0, 10))
             })
-    }, [movieId]);
+    }, [id]);
 
 
     return (

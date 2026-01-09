@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 
 function MovieList() {
     const [moviesList, setMoviesList] = useState([]);
@@ -38,7 +39,7 @@ function MovieList() {
                     <img src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`} />
                     <h2>{movie.title}</h2>
                     <span>{movie.vote_average}</span>
-                    <button>Voir les détails</button> {/* Permet d'accéder à la page de détail de l'article */}
+                    <Link to={`/movie/${movie.id}`}>Voir les détails</Link> {/* Permet d'accéder à la page de détail de l'article */}
                 </li>
             ))
             }
