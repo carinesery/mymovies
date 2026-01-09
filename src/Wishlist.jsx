@@ -1,12 +1,10 @@
 import { useState } from "react";
 
 function Wishlist({wishlist, removeFromWishlist}) {
-    let countWishlist = wishlist.length;
-    console.log(wishlist);
-    // 
+  
     return (
         <>
-            <p>{countWishlist}</p>
+            <p>Nombre de films dans ma wishlist : {wishlist.length}</p>
             <ul>
                 {wishlist.map((movie, index) => (
                     <li key={index}>

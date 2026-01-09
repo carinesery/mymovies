@@ -1,4 +1,6 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useState } from "react";
+import Navbar from "./Navbar.jsx"
 import MovieList from './MovieList.jsx'
 import MovieDetail from './MovieDetail.jsx'
 import Wishlist from './Wishlist.jsx'
@@ -25,13 +27,21 @@ function App() {
 
   return (
     <>
-      <Wishlist
-        wishlist={wishlist}
-        removeFromWishlist={removeFromWishlist} />
-      {/* <MovieList /> */}
-      <MovieDetail
-        addToWishlist={addToWishlist}
-        removeFromWishlist={removeFromWishlist} />
+      <BrowserRouter>
+        <Navbar wishlistCount={wishlist.length} />
+
+        <Routes>
+          <Route path="/" element={<MovieList />}></Route>
+          <Route path="/movie/:id" element={<MovieDetail
+            addToWishlist={addToWishlist}
+            removeFromWishlist={removeFromWishlist} />}>
+          </Route>
+          <Route path="/wishlist" element={<Wishlist
+            wishlist={wishlist}
+            removeFromWishlist={removeFromWishlist} />}>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
