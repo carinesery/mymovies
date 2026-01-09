@@ -9,12 +9,15 @@ function MovieList() {
 
     const apiKey = import.meta.env.VITE_APP_TMDB_KEY
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
+        const url = search 
+        ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}`
+        : `https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`
+        fetch(url)
             .then((response) => response.json())
             .then((data) => {
                 setMoviesList(data.results);
             });
-    }, [category]);
+    }, [category, search]);
 
     const filteredMovies = moviesList.filter((movie) => movie.title.toLowerCase().includes(search.toLowerCase()));
 
