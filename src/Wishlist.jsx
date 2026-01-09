@@ -1,5 +1,6 @@
 import {useState, useContext} from "react";
 import {WishlistContext} from "./WishlistProvider.jsx";
+import styles from "./Wishlist.module.css";
 
 function Wishlist() {
     const { wishlist, removeFromWishlist } = useContext(WishlistContext);
@@ -10,8 +11,8 @@ function Wishlist() {
     );
 
     return (
-        <>
-            <div>
+        <div className={styles.container}>
+            <div className={styles.search}>
                 <input
                     type="search"
                     placeholder="Rechercher dans ma wishlist..."
@@ -19,18 +20,18 @@ function Wishlist() {
                     onChange={(e) => setSearch(e.target.value)}
                 />
             </div>
-            <p>Nombre de films dans ma wishlist : {wishlist.length}</p>
-            <ul>
+            <p className={styles.count}>Nombre de films dans ma wishlist : {wishlist.length}</p>
+            <ul className={styles.list}>
                 {filteredWishlist.map((movie, index) => (
-                    <li key={index}>
-                        <img src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`} />
+                    <li key={index} className={styles.card}>
+                        <img src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`} alt={movie.title}/>
                         <h2>{movie.title}</h2>
-                        <span>{movie.vote_average}</span>
+                        <span>⭐ {movie.vote_average}</span>
                         <button onClick={() => removeFromWishlist(movie.id)}>Retirer de ma wishlist</button>
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
 
     )
 }

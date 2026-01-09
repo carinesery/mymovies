@@ -1,0 +1,63 @@
+.container {
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  gap: 2rem;
+}
+
+.poster {
+  max-width: 300px;
+}
+
+.info h1 {
+  margin-bottom: 0.5rem;
+}
+
+.info p {
+  margin-bottom: 0.5rem;
+}
+
+.buttons {
+  margin-top: 1rem;
+}
+
+.buttons button {
+  margin-right: 0.5rem;
+  padding: 0.4rem 0.8rem;
+}
+
+/* Sections */
+.section {
+  margin-top: 2rem;
+}
+
+.section h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* Acteurs */
+.actors {
+  list-style: none;
+  padding: 0;
+}
+
+.actors li {
+  margin-bottom: 0.2rem;
+}
+
+/* Films similaires */
+.similar {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem;
+}
+
+.similar li {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: center;
+}

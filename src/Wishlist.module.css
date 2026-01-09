@@ -1,0 +1,53 @@
+.container {
+  padding: 1rem;
+}
+
+/* Recherche */
+.search {
+  margin-bottom: 1rem;
+}
+
+.search input {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Compteur */
+.count {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* Liste */
+.list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card h2 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.card span {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.card button {
+  padding: 0.4rem 0.8rem;
+}

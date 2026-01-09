@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import styles from "./MovieList.module.css";
 
 function MovieList() {
     const [moviesList, setMoviesList] = useState([]);
@@ -28,8 +29,8 @@ function MovieList() {
     const filteredMovies = moviesList.filter((movie) => movie.title.toLowerCase().includes(search.toLowerCase()));
 
     return (
-        <>
-            <div>
+        <div className={styles.container}>
+            <div className={styles.search}>
                 <input
                     type="search"
                     placeholder="Rechercher un film ..."
@@ -37,28 +38,29 @@ function MovieList() {
                     onChange={(e) => setSearch(e.target.value)}
                 />
             </div>
-            <div>
+            <div className={styles.categories}>
                 <button onClick={() => { setCategory("popular"); setPage(1) }}>Populaires</button>
                 <button onClick={() => { setCategory("now_playing"); setPage(1) }}>A l'affiche</button>
                 <button onClick={() => { setCategory("top_rated"); setPage(1) }}>Les mieux notés</button>
                 <button onClick={() => { setCategory("upcoming"); setPage(1) }}>A venir</button>
             </div>
-            <div>
+            <div className={styles.pagination}>
                 <button onClick={() => setPage(page - 1)} disabled={page === 1}>Page précédente</button>
                 <span>Page {page}</span>
                 <button onClick={() => setPage(page + 1)}>Page suivante</button>
             </div>
-            <ul>{filteredMovies.map((movie, index) => (
-                <li key={index}>
-                    <img src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`} />
+            <ul className={styles.list}>
+                {filteredMovies.map((movie, index) => (
+                <li key={index} className={styles.card}>
+                    <img src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`} alt={movie.title} />
                     <h2>{movie.title}</h2>
-                    <span>{movie.vote_average}</span>
-                    <Link to={`/movie/${movie.id}`}>Voir les détails</Link> {/* Permet d'accéder à la page de détail de l'article */}
+                    <span>⭐ {movie.vote_average}</span>
+                    <Link to={`/movie/${movie.id}`}>Voir les détails</Link>
                 </li>
             ))
             }
             </ul>
-        </>
+        </div>
     )
 }
 
