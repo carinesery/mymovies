@@ -1,6 +1,8 @@
-import { useState } from "react";
+import {useState, useContext} from "react";
+import {WishlistContext} from "./WishlistProvider.jsx";
 
-function Wishlist({ wishlist, removeFromWishlist }) {
+function Wishlist() {
+    const { wishlist, removeFromWishlist } = useContext(WishlistContext);
     const [search, setSearch] = useState("");
 
     const filteredWishlist = wishlist.filter((movie) =>
