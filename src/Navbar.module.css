@@ -1,0 +1,17 @@
+.nav {
+  background-color: #1f2937; /* gris foncé */
+  padding: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
