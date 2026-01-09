@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {useParams} from "react-router-dom";
+import {WishlistContext} from "./WishlistProvider"
 
-function MovieDetail({addToWishlist, removeFromWishlist}) {
+function MovieDetail() {
+    const {addToWishlist, removeFromWishlist} = useContext(WishlistContext);
     const [movie, setMovie] = useState({});
     const [actors, setActors] = useState([]);
     const {id} = useParams();
